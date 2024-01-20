@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Lista de Proveedores</title>
+    </head>
+    <body>
+    <div class="container">
+        <h1> Login </h1>
+        <form th:action="@{/login}" method="post">
+            <div class="container">
+                <label>Username : </label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <label>Password : </label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <span th:text="${mensaje_error}"></span>
+    </div>
+    </body>
+</html>
