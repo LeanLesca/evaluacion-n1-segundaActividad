@@ -34,7 +34,7 @@ public class Controlador {
     @GetMapping("/guardar")
     public String crearProveedor(Model model) {
         model.addAttribute("proveedor", new Proveedores());
-        return "crearProveedor";
+        return "crearEditarProveedor";
     }
 
     @GetMapping("/listadoProveedores")
@@ -68,6 +68,7 @@ public class Controlador {
 
     @PostMapping("/guardar")
     public String guardar(Proveedores proveedor){
+        System.out.println("id : " + proveedor.getIdProveedor());
         proveedoresServicesDAO.guardar(proveedor);
         return "redirect:/listadoProveedores";
     }
@@ -79,10 +80,17 @@ public class Controlador {
         if(proveedor != null){
             model.addAttribute("proveedor", proveedor);
             model.addAttribute("editar", true);
-            return "crearProveedor";
+            return "crearEditarProveedor";
         } else {
             return "redirect:/listadoProveedores";
         }
     }
 
+    @GetMapping("/eliminar/{idProveedor}")
+    public String eliminarProveedor(Proveedores proveedor) {
+        Proveedores proveedorEliminar = proveedoresServicesDAO.encontrarProveedorPorID(proveedor.getIdProveedor());
+        proveedoresServicesDAO.eliminaProveedor(proveedorEliminar);
+
+        return "redirect:/listadoProveedores";
+    }
 }

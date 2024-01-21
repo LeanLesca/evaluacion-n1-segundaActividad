@@ -2,10 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Creacion de Proveedor</title>
+    <title>Creacion y Edicion de Proveedores</title>
 </head>
 <body>
   <form th:action="@{/guardar}" method="post" th:object="${proveedor}">
+    <input type="number" name="idProveedor" th:field="*{idProveedor}" style="display: none;"/>
+    <br>
     <label for="nombre">Nombre: </label>
     <input type="text" name="nombre" th:field="*{nombre}" required/>
     <br>
@@ -29,25 +31,9 @@
     </select>
     <br>
 
-    <button type="submit"  name="guardar" th:if="${editar}" th:text="Actualizar">Actualizar</button>
-    <button type="submit"  name="guardar" th:unless="${editar}" th:text="Guardar">Guardar</button>
+    <button type="submit"  name="guardar" th:if="${editar}" th:text="Actualizar">Actualizar Datos</button>
+    <button type="submit"  name="guardar" th:unless="${editar}" th:text="Guardar">Guardar Proveedor</button>
     <a th:href="@{/listadoProveedores}">Cancelar</a>
   </form>
-
-
-
-
-
-  <!--
-    <a th:if="${proveedor.idProveedor != null}" th:href="@{'/editar/' + ${proveedor.idProveedor}}">Editar</a>
-    <a th:unless="${proveedor.idProveedor != null}" th:href="@{/guardar}">Crear</a>
-
-    <a th:if="${proveedor.idProveedor != null}" th:href="@{'/editar/' + ${proveedor.idProveedor}}"}>Editar</a>
-
-    <a th:href="@{'/guardar'}" >Guardar</a>
-    <a th:unless="${proveedor.idProveedor != null}" th:href="@{'/guardar'}">Guardar</a>
-    -->
-
-
 </body>
 </html>

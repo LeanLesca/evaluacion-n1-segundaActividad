@@ -38,4 +38,8 @@ public class ProveedoresServicesImpl implements ProveedoresServices {
         return interfazDatoProveedores.findById(id).orElse(null);
     }
 
+    @Override
+    public void eliminaProveedor(Proveedores proveedor) {
+        interfazDatoProveedores.delete(proveedor);
+    }
 }

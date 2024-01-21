@@ -30,7 +30,7 @@
         <td th:text="${proveedor.sitioWeb}"></td>
         <td th:text="${proveedor.manejoEstados(proveedor.estado)}"></td>
         <td><a th:href="@{/editar/} + ${proveedor.getIdProveedor}" th:text = "Editar"/></td>
-        <td><a th:href="@{/eliminar} + ${proveedor.getIdProveedor}" th:text = "Eliminar"/></td>
+        <td><a th:href="@{/eliminar/} + ${proveedor.getIdProveedor}" th:text = "Eliminar"/></td>
     </tr>
   </table>
     <a th:href="@{/guardar}" th:text = "Crear"/>
