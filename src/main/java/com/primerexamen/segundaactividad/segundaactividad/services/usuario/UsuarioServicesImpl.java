@@ -1,7 +1,7 @@
 package com.primerexamen.segundaactividad.segundaactividad.services.usuario;
 
-import com.primerexamen.segundaactividad.segundaactividad.models.Usuario;
-import com.primerexamen.segundaactividad.segundaactividad.repository.DAOUsuarios;
+import com.primerexamen.segundaactividad.segundaactividad.persistence.entities.Usuarios;
+import com.primerexamen.segundaactividad.segundaactividad.persistence.repository.DAOUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +16,13 @@ public class UsuarioServicesImpl implements UsuarioServices{
 
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> getUsuarios() {
-        return (List<Usuario>) interfazDatoUsuarios.findAll();
+    public List<Usuarios> getUsuarios() {
+        return (List<Usuarios>) interfazDatoUsuarios.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Usuario getUsuarioByNombre(String nombre) {
+    public Usuarios getUsuarioByNombre(String nombre) {
         return interfazDatoUsuarios.findByNombre(nombre);
     }
 }

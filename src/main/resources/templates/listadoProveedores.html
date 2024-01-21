@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:a="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -8,8 +8,8 @@
   <title>Lista de Proveedores</title>
 </head>
 <body>
-<!--<div th:if="${listaUsuarios != null and !listaUsuarios.empty}"> -->
-  <div>
+<div th:if="${listaProveedores != null and !listaProveedores.empty}">
+
   <table border="1">
     <tr>
       <th>Codigo Proveedor</th>
@@ -22,20 +22,18 @@
     </tr>
       <h1 th:text="${tituloTabla}"></h1>
     <tr th:each="proveedor : ${listaProveedores}">
-        <td th:text="${proveedor.codigoProveedor}"></td>
+        <td th:text="${proveedor.getIdProveedor}"></td>
         <td th:text="${proveedor.nombre}"></td>
         <td th:text="${proveedor.telefono}"></td>
         <td th:text="${proveedor.direccion}"></td>
         <td th:text="${proveedor.email}"></td>
         <td th:text="${proveedor.sitioWeb}"></td>
         <td th:text="${proveedor.manejoEstados(proveedor.estado)}"></td>
+        <td><a th:href="@{/editar/} + ${proveedor.getIdProveedor}" th:text = "Editar"/></td>
+        <td><a th:href="@{/eliminar} + ${proveedor.getIdProveedor}" th:text = "Eliminar"/></td>
     </tr>
   </table>
-  <!--
-  <td><a th:href="@{/editar/} + ${producto.codigoProducto}" th:text = "editar"/></td>
-  <td><a th:href="@{/eliminar/} + ${producto.codigoProducto}" th:text = "eliminar"/></td>
-  -->
+    <a th:href="@{/guardar}" th:text = "Crear"/>
 </div>
-
 </body>
 </html>
