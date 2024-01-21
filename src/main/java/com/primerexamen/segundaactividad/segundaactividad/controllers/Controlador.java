@@ -50,13 +50,12 @@ public class Controlador {
                         @RequestParam String password, Model model){
         try{
             Usuarios user = usuarioServicesDAO.getUsuarioByNombre(username);
-            System.out.println(user);
             if (user != null && user.getPasswordUsuario().equals(password)) {
                 // Autenticación exitosa
                 return "redirect:/listadoProveedores";
             } else {
                 // Autenticación falla
-                model.addAttribute("mensaje_error", "usuario no existe o contraseña incorrectos");
+                model.addAttribute("mensaje_error", "usuario no existe o contraseña incorrectos, intente nuevamente");
                 return "index";
             }
         } catch (DataAccessException e){
@@ -75,7 +74,6 @@ public class Controlador {
 
     @GetMapping("/editar/{idProveedor}")
     public String editar(@PathVariable int idProveedor , Model model){
-        System.out.println(idProveedor);
         Proveedores proveedor = proveedoresServicesDAO.encontrarProveedorPorID(idProveedor);
         if(proveedor != null){
             model.addAttribute("proveedor", proveedor);
